@@ -5,7 +5,7 @@
 import { useSession } from "next-auth/react";
 import EnhancedStudentDashboard from "./components/students/studentDashboard";
 import SignupFormDemo from "./signin/page";
-// import EnhancedRegistrationForm from "./signup/page";
+import EnhancedRegistrationForm from "./signup/page";
 
 
 export default function Home() {
@@ -18,7 +18,7 @@ export default function Home() {
     <div className="">
       {/* <EnhancedRegistrationForm/> */}
       <SignupFormDemo/>
-      {/* <EnhancedStudentDashboard />                                                                   */}
+      {/* <EnhancedStudentDashboard/>                                       */}
     </div>
   );
 }

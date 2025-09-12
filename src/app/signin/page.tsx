@@ -18,6 +18,7 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 
+
 export default function SignupFormDemo() {
   // const { data : session } = useSession();
 
@@ -55,7 +56,8 @@ export default function SignupFormDemo() {
       if (result?.ok) {
         toast("Signed in successfully");
         
-        router.push("https://attendance.bdcoe.co.in/");
+       router.push('/components/students')
+
         setIsLoading(false);
         // console.log("first")
       } else {

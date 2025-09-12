@@ -613,9 +613,11 @@ export default function EnhancedStudentDashboard() {
               )}
               <Button
                 className="bg-red-500 hover:bg-red-600"
-                onClick={() =>
-                  signOut({ callbackUrl: "/signin", redirect: true })
-                }
+                 onClick={async() => {
+                        await signOut({ redirect: false }); // only logs out
+                                             router.push("/"); 
+                                      }
+                                    }
               >
                 Signout
               </Button>

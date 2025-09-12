@@ -24,6 +24,7 @@ import FlagUser from "./flag-user"
 import { showAllUserDetails } from "@/lib/action"
 import AddLeader from "./addLeader"
 import { signOut } from "next-auth/react"
+import { useRouter } from "next/navigation"
 
 export default function AttendanceDashboard() {
   const [apiData, setApiData] = useState<any>(null)
@@ -36,6 +37,8 @@ export default function AttendanceDashboard() {
   const [attendance, setAttendance] = useState<{[key: string]: boolean}>({})
   const [activeTab, setActiveTab] = useState("overview")
   const [allUser, setAllUser] = useState<Object[]>([])
+
+  const router=useRouter()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -306,8 +309,11 @@ export default function AttendanceDashboard() {
           />
                         <Button
                           className="bg-red-500 hover:bg-red-600"
-                          onClick={() =>
-                            signOut({ callbackUrl: "/signin", redirect: true })
+                          onClick={async() => {
+                             await signOut({ redirect: false }); // only logs out
+                                 router.push("/"); 
+                          }
+                         
                           }
                         >
                           Signout

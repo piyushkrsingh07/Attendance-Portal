@@ -24,11 +24,11 @@ export async function middleware(request: NextRequest) {
   // }
 
   if (!token && url.pathname.startsWith("/admin")) {
-    return NextResponse.redirect(new URL("/signin", request.url));
+    return NextResponse.redirect(new URL("/", request.url));
   }
 
   if (!token && url.pathname.startsWith("/admin")) {
-    return NextResponse.redirect(new URL("/signin", request.url));
+    return NextResponse.redirect(new URL("/", request.url));
   }
 
  // Redirect non-admin users trying to access admin routes
