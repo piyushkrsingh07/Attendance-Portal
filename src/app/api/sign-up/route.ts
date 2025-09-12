@@ -68,6 +68,7 @@ export async function POST(req:Request) {
 
 
 
+
     if (!studentNo || !password || !name) {
       return NextResponse.json({ message: 'studentNo and password are required' }, { status: 400 });
     }
