@@ -56,8 +56,9 @@ export default function EnhancedRegistrationForm() {
 
       if (!response.ok) {
         throw new Error(data.message || 'Something went wrong')
+        
       }
-
+      
       setSuccess(true)
       setFormData({ name: '', studentNo: '', password: '' })
     } catch (err:any) {

@@ -35,6 +35,7 @@ const students = [
   { name: "Saurabh Kumar", studentNo: "2413001", email: "saurabh2413001@akgec.ac.in" },
   { name: "Shafqa Fatima", studentNo: "2413120", email: "shafqa2413120@akgec.ac.in" },
   { name: "Shankaran Prakash", studentNo: "2431032", email: "shankaran2431032@akgec.ac.in" },
+   { name: "Shagun", studentNo: "2413006", email: "shagun2413006@akgec.ac.in" },
   { name: "Shreya Sahu", studentNo: "24164012", email: "shreya24164012@akgec.ac.in" },
   { name: "Siddharth Singh", studentNo: "24153082", email: "siddharth24153082@akgec.ac.in" },
   { name: "Sneha Tiwari", studentNo: "2431195", email: "sneha2431195@akgec.ac.in" },
