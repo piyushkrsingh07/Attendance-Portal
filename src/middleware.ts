@@ -8,9 +8,10 @@ export { default } from "next-auth/middleware";
 export async function middleware(request: NextRequest) {
   const token = await getToken({ req: request });
 
+  
   const url = request.nextUrl;
-
-  // console.log(token,"rvrgvr")
+//   console.log("dekho token see",token)
+// console.log(token,"hello")
 
   const isAdmin : string | undefined = token ? (token as { role: string }).role : undefined;
 
@@ -18,9 +19,9 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/", request.url));
   }
   
-  if (!token && url.pathname !== "/signin") {
-    return NextResponse.redirect(new URL("/signin", request.url));
-  }
+  // if (!token && url.pathname !== "/signin") {
+  //   return NextResponse.redirect(new URL("/signin", request.url));
+  // }
 
   if (!token && url.pathname.startsWith("/admin")) {
     return NextResponse.redirect(new URL("/signin", request.url));
@@ -30,14 +31,14 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/signin", request.url));
   }
 
-  // Redirect non-admin users trying to access admin routes
+ // Redirect non-admin users trying to access admin routes
   if (isAdmin !== "admin" && url.pathname.startsWith("/admin")) {
     return NextResponse.redirect(new URL("/", request.url)); // Or redirect to a not-authorized page
   }
 
-  if (url.pathname.startsWith("/signup")) {
-    return NextResponse.redirect(new URL("/", request.url));
-  }
+//   if (url.pathname.startsWith("/signup")) {
+//     return NextResponse.redirect(new URL("/signup", request.url));
+//   }  
 
   return NextResponse.next();
 }

@@ -23,6 +23,7 @@ import axios from "axios"
 import FlagUser from "./flag-user"
 import { showAllUserDetails } from "@/lib/action"
 import AddLeader from "./addLeader"
+import { signOut } from "next-auth/react"
 
 export default function AttendanceDashboard() {
   const [apiData, setApiData] = useState<any>(null)
@@ -294,7 +295,7 @@ export default function AttendanceDashboard() {
     <div className="container mx-auto p-4 space-y-8">
       <header className="flex justify-between items-center">
         <h1 className="text-3xl font-bold">Attendance Management System</h1>
-        <div className="relative w-64">
+        <div className="relative w-64 flex gap-2">
           <Search className="absolute left-2 top-3 h-4 w-4 text-gray-400" />
           <Input
             type="text"
@@ -303,6 +304,14 @@ export default function AttendanceDashboard() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
+                        <Button
+                          className="bg-red-500 hover:bg-red-600"
+                          onClick={() =>
+                            signOut({ callbackUrl: "/signin", redirect: true })
+                          }
+                        >
+                          Signout
+                        </Button>
         </div>
       </header>
       <AttendanceSummary />

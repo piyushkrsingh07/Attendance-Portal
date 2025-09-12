@@ -17,8 +17,8 @@ const UserSchema = new mongoose.Schema(
     },
      projects: [
             {
-              title: { type: String, required: true, unique: true },
-              link: { type: String, required: true }, 
+              title: { type: String ,unique:true},
+              link: { type: String }, 
               submissionDate: { type: Date, default: Date.now }
             }
           ],
