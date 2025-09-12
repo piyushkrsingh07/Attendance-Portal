@@ -54,7 +54,8 @@ const students = [
   { name: "Pranay Srivastava", studentNo: "23153011", email: "pranay23153011@akgec.ac.in" },
   { name: "Piyush Kumar Singh", studentNo: "23153101", email: "piyush23153101@akgec.ac.in" },
   { name: "Samriddhi Yadav", studentNo: "2310108", email: "samriddhi2310108@akgec.ac.in" },
-  
+  { name: "Vansh Atrey", studentNo: "2310032", email: "vansh2310032@akgec.ac.in" },
+
 ]
 
 
