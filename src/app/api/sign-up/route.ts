@@ -49,7 +49,9 @@ const students = [
   { name: "Vidhi Gupta", studentNo: "24153139", email: "vidhi24153139@akgec.ac.in" },
   { name: "Vishakha Ahlawat", studentNo: "2411072", email: "vishakha2411072@akgec.ac.in" },
   { name: "Yashasvi Khatri", studentNo: "2412064", email: "yashasvi2412064@akgec.ac.in" },
-  { name: "Yashika Sahu", studentNo: "2431046", email: "yashika2431046@akgec.ac.in" }
+  { name: "Yashika Sahu", studentNo: "2431046", email: "yashika2431046@akgec.ac.in" },
+  { name: "Pranay Srivastava", studentNo: "23153011", email: "pranay23153011@akgec.ac.in" },
+  { name: "Piyush Kumar Singh", studentNo: "23153101", email: "piyush23153101@akgec.ac.in" },
 ]
 
 
@@ -79,9 +81,9 @@ export async function POST(req:Request) {
 
     console.log(findExistingUser)
 
-    // if (findExistingUser.length === 0) {
-    //   return NextResponse.json({ error: 'Invalid Authorization' }, { status: 400 });
-    // }
+    if (findExistingUser.length === 0) {
+      return NextResponse.json({ error: 'Invalid Authorization' }, { status: 400 });
+    }
 
     const user = new User({ studentNo, password , Name : name});
     await user.save();
