@@ -17,7 +17,7 @@ const UserSchema = new mongoose.Schema(
     },
      projects: [
             {
-              title: { type: String ,unique:true},
+              title: { type: String },
               link: { type: String }, 
               submissionDate: { type: Date, default: Date.now }
             }
