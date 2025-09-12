@@ -1,8 +1,10 @@
 "use client"
 // import SignupFormDemo from "./signin/page";
 
+
 import { useSession } from "next-auth/react";
 import EnhancedStudentDashboard from "./components/students/studentDashboard";
+import SignupFormDemo from "./signin/page";
 // import EnhancedRegistrationForm from "./signup/page";
 
 
@@ -15,7 +17,8 @@ export default function Home() {
   return (
     <div className="">
       {/* <EnhancedRegistrationForm/> */}
-      <EnhancedStudentDashboard />
+      <SignupFormDemo/>
+      {/* <EnhancedStudentDashboard />                                                                   */}
     </div>
   );
 }

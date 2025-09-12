@@ -54,7 +54,8 @@ export default function SignupFormDemo() {
 
       if (result?.ok) {
         toast("Signed in successfully");
-        router.push("/");
+        
+        router.push("https://attendance.bdcoe.co.in/");
         setIsLoading(false);
         // console.log("first")
       } else {
