@@ -36,9 +36,9 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/", request.url)); // Or redirect to a not-authorized page
   }
 
-//   if (url.pathname.startsWith("/signup")) {
-//     return NextResponse.redirect(new URL("/signup", request.url));
-//   }  
+  if (url.pathname.startsWith("/signup")) {
+    return NextResponse.redirect(new URL("/", request.url));
+  }  
 
   return NextResponse.next();
 }
