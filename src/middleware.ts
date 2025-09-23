@@ -39,7 +39,7 @@ export async function middleware(request: NextRequest) {
   if (url.pathname.startsWith("/signup")) {
     return NextResponse.redirect(new URL("/", request.url));
   }  
-
+  
   return NextResponse.next();
 }
 
