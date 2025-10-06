@@ -736,7 +736,7 @@ export default function EnhancedStudentDashboard() {
                       <TabsContent value="new">
                         <div className="bg-white p-4 rounded-lg shadow mt-4 relative">
                           {/* Overlay for New Project section */}
-                          {/* <div className="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+                          <div className="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
                             <div className="bg-white p-8 w-64 md:w-full rounded-lg shadow-lg max-w-md text-center transform transition-transform duration-300 scale-105 hover:scale-100">
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -769,7 +769,7 @@ export default function EnhancedStudentDashboard() {
                                 More Information
                               </a>
                             </div>
-                          </div> */}
+                          </div>
                           <h3 className="font-semibold text-lg mb-4">
                             Submit New Project
                           </h3>
