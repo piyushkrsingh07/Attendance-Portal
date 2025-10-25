@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { authOptions } from '../auth/[...nextauth]/option';
 import { ConnectToDB } from '@/lib/db';
 import FreezeAttendances from '@/lib/models/freeze.attendance';
+export const dynamic = "force-dynamic"
 
 export async function GET(req: NextRequest) {
   try {

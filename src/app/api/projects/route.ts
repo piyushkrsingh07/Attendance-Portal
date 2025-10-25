@@ -5,7 +5,7 @@ import { getServerSession } from 'next-auth';
 import {authOptions} from '@/app/api/auth/[...nextauth]/option';
 import {ConnectToDB} from '@/lib/db';
 import {User} from '@/lib/models/user.model';
-
+export const dynamic = "force-dynamic"
 export async function GET() {
   try {
     const session = await getServerSession(authOptions);

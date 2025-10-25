@@ -1,7 +1,7 @@
 import { format } from 'date-fns'
 import React, { useEffect, useState } from 'react'
 
-const ClockComponent = React.memo(() => {
+const ClockComponentInner = () => {
     const [time,setTime]=useState(new Date())
 
     useEffect(()=>{
@@ -16,6 +16,7 @@ return ()=>clearInterval(intervalId)
                     {format(time, "HH:mm:ss")}
                       </p>
   )
-})
+}
 
+const ClockComponent=React.memo(ClockComponentInner)
 export default ClockComponent

@@ -187,7 +187,7 @@ export default function EnhancedStudentDashboard() {
     if (!isMounted) return;
     const timer = setInterval(() => {
       const now = new Date();
-      // setCurrentTime(now);
+      setCurrentTime(now);
       if (now >= attendanceWindowEnd) {
         setIsAttendanceWindowOpen(false);
         clearInterval(timer);
@@ -195,7 +195,7 @@ export default function EnhancedStudentDashboard() {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [attendanceWindowEnd, isMounted]);
+  }, [ isMounted]);
 
   const markAttendance = useCallback(async () => {
     await axios
@@ -205,31 +205,31 @@ export default function EnhancedStudentDashboard() {
       })
       .catch((err) => console.log(err));
     setAttendanceMarked(true);
-  }, [attendanceMarked]);
+  }, []);
 
-  // useEffect(() => {
-  //   const fetchStatus = async () => {
-  //     try {
-  //       const response = await fetch("/api/checkStatusAttendance"); // Adjust the API route as necessary
-  //       const data = await response.json();
+  useEffect(() => {
+    const fetchStatus = async () => {
+      try {
+        const response = await fetch("/api/checkStatusAttendance"); // Adjust the API route as necessary
+        const data = await response.json();
 
-  //       if (response.status === 200) {
-  //         setWindowOpen(true);
-  //       } else {
-  //         setWindowOpen(false);
-  //         console.error("Failed to fetch status:", data.error);
-  //       }
-  //     } catch (error) {
-  //       console.error("Error fetching attendance status:", error);
-  //     }
-  //   };
+        if (response.status === 200) {
+          setWindowOpen(true);
+        } else {
+          setWindowOpen(false);
+          console.error("Failed to fetch status:", data.error);
+        }
+      } catch (error) {
+        console.error("Error fetching attendance status:", error);
+      }
+    };
 
-  //   // Poll every second
-  //   const intervalId = setInterval(fetchStatus, 5000);
+    // Poll every second
+    const intervalId = setInterval(fetchStatus, 5000);
 
-  //   // Clean up the interval on component unmount
-  //   return () => clearInterval(intervalId);
-  // }, []);
+    // Clean up the interval on component unmount
+    return () => clearInterval(intervalId);
+  }, []);
 
   useEffect(() => {
     const getUserDetails = async () => {
@@ -276,7 +276,7 @@ export default function EnhancedStudentDashboard() {
       }
     };
     checkLeader();
-  }, []);
+  }, [session?.user.studentNo]);
 
   useEffect(() => {
     const fetchAttendance = async () => {
@@ -351,7 +351,7 @@ export default function EnhancedStudentDashboard() {
       submitProject();
       // toast.error("portal closed");
     }
-  }, [isSubmitted]);
+  }, [isSubmitted,newProject.description]);
 
   const handleProfileUpdate = (updatedData: any) => {
     setStudentData(updatedData);
@@ -404,7 +404,7 @@ export default function EnhancedStudentDashboard() {
       }
     };
     showFlaguser();
-  }, []);
+  }, [session?.user.studentNo]);
 
   useEffect(() => {
     const getProjects = async () => {
@@ -836,7 +836,7 @@ export default function EnhancedStudentDashboard() {
               {
                 checkLeaderAccess ?  <TabsContent value="groupProject"><GroupProject session={session} /></TabsContent> : <TabsContent value="groupProject"> <NotALeader /> </TabsContent>
               }
-             {/* <TabsContent value="project"><FinalProject session={session} /></TabsContent> */}
+             <TabsContent value="project"><FinalProject session={session} /></TabsContent>
 
               <TabsContent value="stats"> <div className="relative">
                   <CardHeader>
