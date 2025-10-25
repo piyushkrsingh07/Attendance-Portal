@@ -69,6 +69,7 @@ import { useRouter } from "next/navigation";
 import AttendanceSkeleton from "./skeletons/attendance-skeleton";
 import SubmittedProjects from "./components/submitted-projects/submittedProjects";
 import SkeletonSubmitted from "./components/submitted-projects/skeletonSubmitted";
+import ClockComponent from "./ClockComponent";
 
 interface userFlagCount {
   flagCount: number | null;
@@ -186,7 +187,7 @@ export default function EnhancedStudentDashboard() {
     if (!isMounted) return;
     const timer = setInterval(() => {
       const now = new Date();
-      setCurrentTime(now);
+      // setCurrentTime(now);
       if (now >= attendanceWindowEnd) {
         setIsAttendanceWindowOpen(false);
         clearInterval(timer);
@@ -206,29 +207,29 @@ export default function EnhancedStudentDashboard() {
     setAttendanceMarked(true);
   }, [attendanceMarked]);
 
-  useEffect(() => {
-    const fetchStatus = async () => {
-      try {
-        const response = await fetch("/api/checkStatusAttendance"); // Adjust the API route as necessary
-        const data = await response.json();
+  // useEffect(() => {
+  //   const fetchStatus = async () => {
+  //     try {
+  //       const response = await fetch("/api/checkStatusAttendance"); // Adjust the API route as necessary
+  //       const data = await response.json();
 
-        if (response.status === 200) {
-          setWindowOpen(true);
-        } else {
-          setWindowOpen(false);
-          console.error("Failed to fetch status:", data.error);
-        }
-      } catch (error) {
-        console.error("Error fetching attendance status:", error);
-      }
-    };
+  //       if (response.status === 200) {
+  //         setWindowOpen(true);
+  //       } else {
+  //         setWindowOpen(false);
+  //         console.error("Failed to fetch status:", data.error);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching attendance status:", error);
+  //     }
+  //   };
 
-    // Poll every second
-    const intervalId = setInterval(fetchStatus, 5000);
+  //   // Poll every second
+  //   const intervalId = setInterval(fetchStatus, 5000);
 
-    // Clean up the interval on component unmount
-    return () => clearInterval(intervalId);
-  }, []);
+  //   // Clean up the interval on component unmount
+  //   return () => clearInterval(intervalId);
+  // }, []);
 
   useEffect(() => {
     const getUserDetails = async () => {
@@ -629,8 +630,8 @@ export default function EnhancedStudentDashboard() {
                 <TabsTrigger value="attendance">Attendance</TabsTrigger>
                 {/* <TabsTrigger value="timetable">Timetable</TabsTrigger> */}
                 {/* <TabsTrigger value="project">Final Project Submission</TabsTrigger> */}
-                <TabsTrigger value="projects">Projects</TabsTrigger>
-                {/* <TabsTrigger value="groupProject">Group</TabsTrigger> */}
+                {/* <TabsTrigger value="projects">Projects</TabsTrigger> */}
+                <TabsTrigger value="groupProject">Group</TabsTrigger>
                 <TabsTrigger value="stats">Statistics</TabsTrigger>
 
                 <TabsTrigger value="profile-links">Profile</TabsTrigger>
@@ -835,7 +836,7 @@ export default function EnhancedStudentDashboard() {
               {
                 checkLeaderAccess ?  <TabsContent value="groupProject"><GroupProject session={session} /></TabsContent> : <TabsContent value="groupProject"> <NotALeader /> </TabsContent>
               }
-             <TabsContent value="project"><FinalProject session={session} /></TabsContent>
+             {/* <TabsContent value="project"><FinalProject session={session} /></TabsContent> */}
 
               <TabsContent value="stats"> <div className="relative">
                   <CardHeader>
@@ -999,9 +1000,7 @@ export default function EnhancedStudentDashboard() {
                   <div>
                     <p className="text-lg font-semibold">Current Time</p>
                     {isMounted ? (
-                      <p className="text-2xl">
-                        {format(currentTime, "HH:mm:ss")}
-                      </p>
+                 <ClockComponent/>
                     ) : (
                       <p>Loading...</p>
                     )}
