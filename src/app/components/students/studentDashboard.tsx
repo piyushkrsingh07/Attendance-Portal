@@ -276,7 +276,7 @@ export default function EnhancedStudentDashboard() {
       }
     };
     checkLeader();
-  }, [session?.user.studentNo]);
+  }, []);
 
   useEffect(() => {
     const fetchAttendance = async () => {
@@ -351,7 +351,7 @@ export default function EnhancedStudentDashboard() {
       submitProject();
       // toast.error("portal closed");
     }
-  }, [isSubmitted,newProject.description]);
+  }, [isSubmitted]);
 
   const handleProfileUpdate = (updatedData: any) => {
     setStudentData(updatedData);
@@ -630,8 +630,8 @@ export default function EnhancedStudentDashboard() {
                 <TabsTrigger value="attendance">Attendance</TabsTrigger>
                 {/* <TabsTrigger value="timetable">Timetable</TabsTrigger> */}
                 {/* <TabsTrigger value="project">Final Project Submission</TabsTrigger> */}
-                {/* <TabsTrigger value="projects">Projects</TabsTrigger> */}
-                <TabsTrigger value="groupProject">Group</TabsTrigger>
+                <TabsTrigger value="projects">Projects</TabsTrigger>
+                {/* <TabsTrigger value="groupProject">Group</TabsTrigger> */}
                 <TabsTrigger value="stats">Statistics</TabsTrigger>
 
                 <TabsTrigger value="profile-links">Profile</TabsTrigger>
@@ -1000,7 +1000,9 @@ export default function EnhancedStudentDashboard() {
                   <div>
                     <p className="text-lg font-semibold">Current Time</p>
                     {isMounted ? (
-                 <ClockComponent/>
+                <p className="text-2xl">
+                        {format(currentTime, "HH:mm:ss")}
+                      </p>
                     ) : (
                       <p>Loading...</p>
                     )}
