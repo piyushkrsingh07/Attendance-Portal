@@ -629,8 +629,8 @@ export default function EnhancedStudentDashboard() {
               <TabsList className="grid w-full grid-cols-4">
                 <TabsTrigger value="attendance">Attendance</TabsTrigger>
                 {/* <TabsTrigger value="timetable">Timetable</TabsTrigger> */}
-                <TabsTrigger value="project">Final Project Submission</TabsTrigger>
-                {/* <TabsTrigger value="projects">Projects</TabsTrigger> */}
+                {/* <TabsTrigger value="project">Final Project Submission</TabsTrigger> */}
+                <TabsTrigger value="projects">Projects</TabsTrigger>
                 {/* <TabsTrigger value="groupProject">Group</TabsTrigger> */}
                 <TabsTrigger value="stats">Statistics</TabsTrigger>
 
